@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="420" viewBox="0 0 520 420">
+  <defs>
+    <linearGradient id="hg" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="420" rx="26" fill="url(#hg)"/>
+  <polygon points="260,30 390,130 390,290 260,390 130,290 130,130" fill="none" stroke="#2f7bff" stroke-width="6" stroke-linejoin="round"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Poppins, Arial" font-size="22" fill="#0b3a8a">Highlight Graphic</text>
+</svg>

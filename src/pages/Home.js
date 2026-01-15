@@ -101,11 +101,11 @@ const Home = () => {
             {/* Duplicate items for seamless scrolling */}
             {[...Array(4)].map((_, i) => (
               <React.Fragment key={i}>
-                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
-                <div className="infinity-scroll-item"><span>▼</span> HealthPlus</div>
-                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
-                <div className="infinity-scroll-item"><span>▼</span> CarePoint</div>
-                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
+                <div className="infinity-scroll-item"><span>•</span> Leading Medical Care</div>
+                <div className="infinity-scroll-item"><span>•</span> Trusted By Thousands</div>
+                <div className="infinity-scroll-item"><span>•</span> Award Winning Service</div>
+                <div className="infinity-scroll-item"><span>•</span> Certified Specialists</div>
+                <div className="infinity-scroll-item"><span>•</span> Advanced Technology</div>
               </React.Fragment>
             ))}
           </div>

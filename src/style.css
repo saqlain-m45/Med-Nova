@@ -1584,27 +1584,25 @@ footer {
 /* Variant for the "Medilix" ribbon (smaller height/text) */
 .infinity-scroll-container.small {
   padding: 8px 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: var(--accent);
+  /* Blue bg */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .infinity-scroll-container.small .infinity-scroll-item {
-  color: var(--accent);
-  /* Blue text */
+  color: #fff;
+  /* White text */
   font-size: 1.2rem;
   margin: 0 30px;
 }
 
 .infinity-scroll-container.small .infinity-scroll-item span {
-  background: var(--accent);
-  color: #fff;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  width: auto;
+  height: auto;
+  margin-right: -5px;
+  font-size: 1.2rem;
 }
 
 @keyframes scroll-ribbon {

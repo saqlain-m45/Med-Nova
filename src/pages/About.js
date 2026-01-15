@@ -49,6 +49,24 @@ const About = () => {
         </div>
       </header>
 
+      {/* PARTNER RIBBON (Medilix Style) */}
+      <section className="py-0 border-bottom">
+        <div className="infinity-scroll-container small">
+          <div className="infinity-scroll-track">
+            {/* Duplicate items for seamless scrolling */}
+            {[...Array(4)].map((_, i) => (
+              <React.Fragment key={i}>
+                <div className="infinity-scroll-item"><span>•</span> Our Mission: Wellness</div>
+                <div className="infinity-scroll-item"><span>•</span> Compassionate Staff</div>
+                <div className="infinity-scroll-item"><span>•</span> Patient-First Approach</div>
+                <div className="infinity-scroll-item"><span>•</span> Excellence In Healthcare</div>
+                <div className="infinity-scroll-item"><span>•</span> Community Focused</div>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* MAIN ABOUT SECTION */}
       <main className="py-5">
         <div className="container">

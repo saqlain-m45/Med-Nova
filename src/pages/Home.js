@@ -30,12 +30,7 @@ const Home = () => {
     { icon: '🏥', title: 'Net Healthcare', description: 'Trusted specialists and advanced diagnostics.' }
   ];
 
-  const processCards = [
-    'Catalyst Services',
-    'Wave Solutions',
-    'Health Hub',
-    'Wave Solutions'
-  ];
+
 
   const doctors = [
     { name: 'Dr. Ayesha Khan', role: 'Medical Director', image: '/assets/doctor-ayesha.jpg' },
@@ -167,35 +162,22 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PROCESS / VIDEO */}
-      <section id="process" className="py-5">
-        <div className="container">
-          <h3 className="text-center section-title">Our Treatment Process</h3>
-          <p className="text-center text-muted mb-4">
-            A structured process that keeps patients informed and comfortable throughout treatment.
-          </p>
-          <motion.div
-            className="video-placeholder mx-auto my-4"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="play-btn">▶</div>
-          </motion.div>
-          <motion.div
-            className="row g-3 mt-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {processCards.map((card, index) => (
-              <motion.div key={index} className="col-md-3" variants={itemVariants}>
-                <div className="process-card p-3">{card}</div>
-              </motion.div>
+      {/* INFINITY SCROLL RIBBON (Replacing Process Section) */}
+      <section className="py-0">
+        <div className="infinity-scroll-container">
+          <div className="infinity-scroll-track">
+            {/* Duplicate items for seamless scrolling */}
+            {[...Array(2)].map((_, i) => (
+              <React.Fragment key={i}>
+                <div className="infinity-scroll-item"><span>✦</span> 24/7 Expert Support</div>
+                <div className="infinity-scroll-item"><span>✦</span> Advanced Diagnostics</div>
+                <div className="infinity-scroll-item"><span>✦</span> Compassionate Care</div>
+                <div className="infinity-scroll-item"><span>✦</span> Modern Facilities</div>
+                <div className="infinity-scroll-item"><span>✦</span> Experienced Specialists</div>
+                <div className="infinity-scroll-item"><span>✦</span> Personalised Wellness</div>
+              </React.Fragment>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 

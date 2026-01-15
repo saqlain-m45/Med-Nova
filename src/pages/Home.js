@@ -94,6 +94,24 @@ const Home = () => {
         </div>
       </header>
 
+      {/* PARTNER RIBBON (Medilix Style) */}
+      <section className="py-0 border-bottom">
+        <div className="infinity-scroll-container small">
+          <div className="infinity-scroll-track">
+            {/* Duplicate items for seamless scrolling */}
+            {[...Array(4)].map((_, i) => (
+              <React.Fragment key={i}>
+                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
+                <div className="infinity-scroll-item"><span>▼</span> HealthPlus</div>
+                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
+                <div className="infinity-scroll-item"><span>▼</span> CarePoint</div>
+                <div className="infinity-scroll-item"><span>▼</span> Medilix</div>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SPECIALIZATIONS */}
       <section id="services" className="py-5">
         <div className="container">

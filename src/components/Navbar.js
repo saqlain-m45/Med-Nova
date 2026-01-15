@@ -60,6 +60,12 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className={`btn btn-sm btn-soft-primary ms-lg-2 fw-bold ${isActive('/prediction')}`} to="/prediction" style={{ color: 'var(--accent)', background: '#eef6ff', borderRadius: '8px', padding: '8px 16px' }}>
                 ✨ Prediction
+                ✨ Prediction
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className={`btn btn-sm btn-soft-danger ms-lg-2 fw-bold ${isActive('/blood-donation')}`} to="/blood-donation" style={{ color: '#c53030', background: '#ffe4e6', borderRadius: '8px', padding: '8px 16px' }}>
+                ❤️ Donate Blood
               </Link>
             </li>
           </ul>

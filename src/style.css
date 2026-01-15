@@ -307,7 +307,7 @@ body {
 
 /* ABOUT PAGE SPECIFIC */
 .about-hero {
-  background: #172a46 url('') center/cover no-repeat;
+  background: #172a46 center/cover no-repeat;
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.06)
 }
 
@@ -713,90 +713,139 @@ footer {
   background: linear-gradient(180deg, #0f335f, #072147);
 }
 
+
+
+/* NEW BLOG STYLES MATCHING DESIGN */
+
+/* Card Container */
 .blog-card {
-  background: #fff;
+  background: transparent;
+  /* Card itself might be transparent or white, design looks transparent or white on light bg */
   border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(12, 50, 110, 0.06);
-}
-
-.blog-photo {
-  height: 220px;
-  background: linear-gradient(180deg, #eef6ff, #f9fbff);
-  box-shadow: inset 0 6px 24px rgba(12, 50, 110, 0.03)
-}
-
-.blog-card h3 {
-  color: var(--blue-900);
-  font-weight: 600
-}
-
-.blog-card .dot {
-  display: inline-block;
-  margin-left: 8px;
-  color: var(--accent)
-}
-
-.pagination .page-link {
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center
-}
-
-.blog-card .small {
-  color: var(--muted)
-}
-
-.sidebar .blog-card {
-  padding: 20px
-}
-
-/* Sidebar sticky behavior on larger screens */
-@media (min-width:992px) {
-  aside.col-lg-4 {
-    position: sticky;
-    top: 110px
-  }
-}
-
-/* Tighter spacing to match Figma */
-.container {
-  max-width: 1140px
-}
-
-/* BLOG DETAILS SPECIFIC */
-.blog-details img {
-  border-radius: 12px
-}
-
-.quote-box {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid rgba(15, 74, 157, 0.04)
-}
-
-.blog-details h2 {
-  color: var(--blue-900);
-  font-weight: 700;
-  margin-top: 6px
-}
-
-.blog-details p {
-  color: #4b5b72;
-  line-height: 1.75
-}
-
-.comment-card {
+  box-shadow: none;
+  /* Removed default shadow for cleaner look, or keep subtle */
+  overflow: hidden;
+  transition: all 0.3s ease;
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  background: #f6fbff;
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 14px
+  flex-direction: column;
 }
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image */
+.blog-card-img-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  height: 200px;
+  /* Fixed height for consistency */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.blog-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-img {
+  transform: scale(1.05);
+  /* Subtle zoom on hover */
+}
+
+/* Typography */
+.blog-category {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #555;
+  /* Dark grey */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  min-height: 3em;
+  /* Ensure alignment */
+}
+
+/* Button */
+.btn-blue-pill {
+  background-color: var(--accent);
+  /* Blue accent #2f7bff */
+  color: #fff;
+  border-radius: 30px;
+  padding: 8px 32px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-blue-pill:hover {
+  background-color: var(--blue-700);
+  /* Darker blue on hover */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(47, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Pagination */
+.pagination-container {
+  font-family: var(--font-sans);
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pagination-text {
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.pagination-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  /* Slightly rounded squares */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover {
+  background: #eee;
+}
+
+.pagination-btn.active {
+  background: #92c040;
+  /* Match button green */
+  color: #fff;
+}
+
+.pagination-btn.arrow {
+  color: #92c040;
+  font-weight: 800;
+}
+
+/* Main Background override if needed for just blog page, 
+   but applied inline in component for scope. 
+   Making sure body text is legible. */
+
 
 .comment-avatar {
   width: 56px;
@@ -1157,5 +1206,345 @@ footer {
 
   .site-footer .footer-brand strong {
     font-size: 18px
+  }
+}
+
+/* REDESIGNED CONTACT PAGE STYLES */
+
+/* Contact Hero with Circular Images */
+.contact-hero-section {
+  position: relative;
+  background: linear-gradient(180deg, #0f335f, #072147);
+  padding: 80px 0 160px 0;
+  /* Extra bottom padding for overlap */
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.contact-hero-content h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-hero-content p {
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.circular-images-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.circular-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.circular-img:hover {
+  transform: scale(1.1);
+  border-color: #fff;
+}
+
+/* Overlapping Container */
+.contact-overlap-container {
+  margin-top: -100px;
+  /* Pull up to overlap hero */
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+}
+
+/* Contact Cards */
+.contact-card-white {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(10, 33, 65, 0.1);
+  overflow: hidden;
+  height: 100%;
+  padding: 40px;
+  transition: transform 0.3s ease;
+}
+
+/* Info Card Specifics */
+.contact-info-list-styled {
+  list-style: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.contact-icon-box {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 8px;
+  /* Square with rounded corners per design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 18px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.contact-icon-box.phone {
+  color: #16a7ff;
+}
+
+.contact-icon-box.email {
+  color: #e94b4b;
+}
+
+.contact-icon-box.loc {
+  color: #9c27b0;
+}
+
+.contact-label {
+  display: block;
+  font-weight: 700;
+  color: #12233b;
+  margin-bottom: 4px;
+}
+
+.contact-value {
+  color: #5d6d81;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Form Styling */
+.form-floating-label {
+  margin-bottom: 25px;
+}
+
+.clean-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+
+.clean-input:focus {
+  border-color: var(--accent);
+}
+
+.clean-input::placeholder {
+  color: #bbb;
+}
+
+.contact-card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* REVAMPED CONTACT PAGE FEATURES */
+
+.feature-card {
+  border-radius: 12px;
+  padding: 40px 30px;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card.blue {
+  background-color: #1c65f0;
+  /* Bright Blue */
+}
+
+.feature-card.teal {
+  background-color: #0d9488;
+  /* Teal/Greenish */
+}
+
+.feature-icon-circle {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.feature-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.feature-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Map Section */
+.map-section {
+  width: 90%;
+  max-width: 1200px;
+  height: 450px;
+  /* Reduced Height */
+  background: #f0f0f0;
+  margin: 0 auto 60px auto;
+  /* Centered with bottom margin */
+  border-radius: 20px;
+  /* Rounded Corners */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Visual Elevation */
+}
+
+.map-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* MODERN CONTACT SECTION (Split Panel) */
+.contact-modern-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.contact-modern-left {
+  background-color: #0f4a9d;
+  /* Brand Dark Blue */
+  color: #fff;
+  padding: 50px 40px;
+  flex: 0 0 40%;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-modern-right {
+  background-color: #fff;
+  padding: 50px 40px;
+  flex: 0 0 60%;
+}
+
+.contact-modern-left h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.contact-modern-left p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+}
+
+.contact-modern-info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.contact-modern-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contact-modern-text h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px;
+  color: #fff;
+}
+
+.contact-modern-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Social Media Icons in Contact Section */
+.social-icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icon-circle:hover {
+  background-color: #fff;
+  color: #0f4a9d;
+  /* Brand Dark Blue */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-circle i {
+  font-size: 1.1rem;
+}
+
+/* Responsive Stack */
+@media (max-width: 991px) {
+
+  .contact-modern-left,
+  .contact-modern-right {
+    flex: 0 0 100%;
   }
 }

@@ -32,42 +32,7 @@ const Footer = () => {
 
   return (
     <>
-      <section className="footer-callouts py-5">
-        <div className="container">
-          <div className="row justify-content-center g-4">
-            <div className="col-md-5">
-              <div className="callout-card callout-blue p-4 rounded-3 shadow-sm">
-                <div className="d-flex gap-3 align-items-start">
-                  <div className="callout-icon bg-white rounded-circle d-flex align-items-center justify-content-center">
-                    🫀
-                  </div>
-                  <div>
-                    <h5 className="mb-1 text-white">Expert Eye Care</h5>
-                    <p className="muted small mb-0">
-                      Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-5">
-              <div className="callout-card callout-teal p-4 rounded-3 shadow-sm">
-                <div className="d-flex gap-3 align-items-start">
-                  <div className="callout-icon bg-white rounded-circle d-flex align-items-center justify-content-center">
-                    📋
-                  </div>
-                  <div>
-                    <h5 className="mb-1 text-white">Eye Health Provider</h5>
-                    <p className="muted small mb-0">
-                      Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <footer className="site-footer py-5 bg-soft">
         <div className="container">
@@ -143,17 +108,7 @@ const Footer = () => {
               <h6>Our Office</h6>
               <p className="muted mt-3"><strong>debra.holt@example.com</strong></p>
               <p className="muted">3891 Ranchview Dr. Richardson, California 62639</p>
-              <div className="mt-3 rounded-3 overflow-hidden">
-                <iframe
-                  title="Footer Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.123456789012!2d-96.12345678901234!3d32.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864eab1234567890%3A0x1234567890abcdef!2sRichardson%2C%20TX!5e0!3m2!1sen!2sus!4v1612345678901!5m2!1sen!2sus"
-                  width="100%"
-                  height="150"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
-              </div>
+
             </div>
           </div>
 

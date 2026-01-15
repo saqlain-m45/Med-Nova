@@ -26,31 +26,18 @@ const itemVariants = {
 const Blog = () => {
   return (
     <PageTransition>
-      <header className="about-hero service-hero py-5">
-        <div className="container text-center text-white py-5">
-          <motion.h1
-            className="display-6 fw-bold mb-2 about-hero-title"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Blog
-          </motion.h1>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb justify-content-center mb-0 bg-transparent">
-              <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Blog
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </header>
+      {/* 
+        NOTE: The user design reference doesn't show a hero section like the original.
+        However, I will keep a simpler header or remove it if strictly following the image. 
+        For now, I'll keep a minimal spacing at top or a simple title if needed, 
+        but the image implies a clean grid. I'll use a simple container with padding.
+      */}
 
-      <main className="py-5">
-        <div className="container">
+      <main className="py-5" style={{ minHeight: '100vh', background: '#f8fdf0' }}>
+        {/* Used a light greenish tint background similar to the image if possible, or keep white. 
+           The image has a very light green/beige background. #f8fdf0 is a subtle green tint. */}
+        <div className="container" style={{ maxWidth: '1200px' }}>
+
           <motion.div
             className="row g-4"
             variants={containerVariants}
@@ -61,25 +48,37 @@ const Blog = () => {
             {blogPosts.map((post) => (
               <motion.div key={post.id} className="col-md-6 col-lg-4" variants={itemVariants}>
                 <motion.div
-                  className="blog-card p-3"
-                  whileHover={{ y: -6, boxShadow: '0 10px 30px rgba(0,0,0,0.12)' }}
+                  className="blog-card h-100"
+                  whileHover={{ y: -5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <img
-                    src={post.image}
-                    className="mb-3"
-                    alt={post.title}
-                    style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '8px' }}
-                  />
-                  <h3>{post.title}</h3>
-                  <p className="text-muted small">{post.excerpt}</p>
-                  <Link to={`/blog/${post.slug}`} className="btn btn-outline-primary btn-sm mt-2">
-                    Read More
-                  </Link>
+                  {/* Image Area */}
+                  <div className="blog-card-img-wrapper">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="blog-card-img"
+                    />
+                  </div>
+
+                  {/* Content Area */}
+                  <div className="blog-card-body text-center p-4 d-flex flex-column align-items-center">
+                    <span className="blog-category mb-2">{post.category}</span>
+                    <h5 className="blog-title mb-3">{post.title}</h5>
+
+                    <div className="mt-auto">
+                      <Link to={`/blog/${post.slug}`} className="btn btn-blue-pill">
+                        READ MORE
+                      </Link>
+                    </div>
+                  </div>
                 </motion.div>
               </motion.div>
             ))}
           </motion.div>
+
+
+
         </div>
       </main>
     </PageTransition>

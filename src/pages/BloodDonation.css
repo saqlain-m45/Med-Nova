@@ -1,0 +1,237 @@
+/* BloodDonation.css */
+
+/* Variables matching brand colors but with enhanced palette */
+:root {
+    --bd-primary: #e63946;
+    --bd-primary-hover: #d62839;
+    --bd-bg: #f8f9fa;
+    --bd-white: #ffffff;
+    --bd-text: #212529;
+    --bd-text-muted: #6c757d;
+    --bd-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --bd-radius: 16px;
+    --bd-input-bg: #f1f3f5;
+}
+
+.bd-page {
+    background-color: var(--bd-bg);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Enhanced Hero Section */
+.bd-hero {
+    background: linear-gradient(135deg, #e63946 0%, #ff6b6b 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 120px;
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.bd-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+    z-index: 0;
+}
+
+.bd-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.bd-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: -1px;
+}
+
+.bd-hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Card Container */
+.bd-card-container {
+    margin-top: -60px;
+    /* Overlap hero */
+    position: relative;
+    z-index: 10;
+    margin-bottom: 80px;
+}
+
+.bd-card {
+    background: var(--bd-white);
+    border-radius: var(--bd-radius);
+    box-shadow: var(--bd-shadow);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+/* Modern Tab Switcher */
+.bd-tabs {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.bd-tab-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    color: var(--bd-text-muted);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.bd-tab-btn.active {
+    background: var(--bd-white);
+    color: var(--bd-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bd-tab-btn:hover:not(.active) {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--bd-text);
+}
+
+/* Forms */
+.bd-form {
+    padding: 3rem;
+}
+
+.bd-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--bd-text);
+    display: block;
+}
+
+.bd-input,
+.bd-select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--bd-input-bg);
+    border: 2px solid transparent;
+    /* Prepare for focus border */
+    border-radius: 10px;
+    color: var(--bd-text);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.bd-input:focus,
+.bd-select:focus {
+    outline: none;
+    background-color: var(--bd-white);
+    border-color: var(--bd-primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+.bd-btn-primary {
+    background: var(--bd-primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    width: 100%;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 14px rgba(230, 57, 70, 0.3);
+}
+
+.bd-btn-primary:hover {
+    background: var(--bd-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+.bd-btn-secondary {
+    background: #ffb703;
+    color: #000;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 14px rgba(255, 183, 3, 0.3);
+}
+
+.bd-btn-secondary:hover {
+    background: #ffc300;
+    transform: translateY(-2px);
+}
+
+/* Alerts */
+.bd-alert {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideDown 0.4s ease-out;
+}
+
+.bd-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.bd-alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bd-hero {
+        padding: 80px 0 100px;
+        text-align: center;
+    }
+
+    .bd-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .bd-form {
+        padding: 2rem 1.5rem;
+    }
+}

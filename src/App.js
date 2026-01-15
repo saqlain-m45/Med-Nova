@@ -17,6 +17,7 @@ const BlogDetails = React.lazy(() => import('./pages/BlogDetails'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Appointment = React.lazy(() => import('./pages/Appointment'));
 const DiseasePrediction = React.lazy(() => import('./pages/DiseasePrediction'));
+const BloodDonation = React.lazy(() => import('./pages/BloodDonation'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -58,6 +59,7 @@ const AnimatedRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/prediction" element={<DiseasePrediction />} />
+        <Route path="/blood-donation" element={<BloodDonation />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ChatBot />

@@ -18,6 +18,7 @@ const Navbar = () => {
       <div className="container nav-inner align-items-center d-flex">
         <Link className="navbar-brand d-flex align-items-center me-4" to="/">
           <img src="/assets/logo.png" alt="Med Nova" className="brand-logo" />
+          <span className="brand-text ms-2">Med Nova</span>
         </Link>
 
         <button
@@ -57,17 +58,17 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`btn btn-soft-primary ms-lg-2 fw-bold ${isActive('/prediction')}`} to="/prediction" style={{ color: 'var(--accent)', background: '#eef6ff', borderRadius: '8px', padding: '0 24px', height: '48px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Link className={`btn btn-sm btn-soft-primary ms-lg-2 fw-bold ${isActive('/prediction')}`} to="/prediction" style={{ color: 'var(--accent)', background: '#eef6ff', borderRadius: '8px', padding: '8px 16px' }}>
                 ✨ Prediction
               </Link>
             </li>
           </ul>
 
           <div className="d-flex align-items-center ms-lg-3">
-            <Link className="nav-link login-link me-3 fw-bold text-dark" to="#">
+            <Link className="nav-link login-link me-3" to="#">
               Login
             </Link>
-            <Link className="btn btn-outline-primary me-3 btn-signup rounded-pill px-4" to="#" style={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}>
+            <Link className="btn btn-outline-primary me-3 btn-signup" to="#">
               Sign Up
             </Link>
             <Link className="btn btn-appointment" to="/appointment">

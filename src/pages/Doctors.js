@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { doctors, specialties } from '../data/doctors';
 import PageTransition from '../components/PageTransition';
 
 const Doctors = () => {
-  const location = useLocation();
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
   const [filteredDoctors, setFilteredDoctors] = useState(doctors);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
-
-  useEffect(() => {
-    if (location.state?.problem) {
-      setSelectedSpecialty(location.state.problem);
-    }
-  }, [location.state]);
 
   useEffect(() => {
     if (selectedSpecialty === 'All') {
@@ -24,22 +17,14 @@ const Doctors = () => {
     }
   }, [selectedSpecialty]);
 
-  // Set first doctor or specific searched doctor as selected
+  // Set first doctor as selected by default when list changes
   useEffect(() => {
     if (filteredDoctors.length > 0) {
-      if (location.state?.specialist) {
-        const found = filteredDoctors.find(d => d.name === location.state.specialist);
-        if (found) {
-          setSelectedDoctor(found);
-          // Clear state to prevent sticking on re-renders if needed, but simple is fine.
-          return;
-        }
-      }
       setSelectedDoctor(filteredDoctors[0]);
     } else {
       setSelectedDoctor(null);
     }
-  }, [filteredDoctors, location.state]);
+  }, [filteredDoctors]);
 
   return (
     <PageTransition>
@@ -64,8 +49,8 @@ const Doctors = () => {
                     key={spec}
                     onClick={() => setSelectedSpecialty(spec)}
                     className={`btn text-start rounded-3 py-2 px-3 fw-medium transition-all ${selectedSpecialty === spec
-                      ? 'btn-primary text-white shadow-sm'
-                      : 'btn-light text-muted bg-transparent hover-bg-light'
+                        ? 'btn-primary text-white shadow-sm'
+                        : 'btn-light text-muted bg-transparent hover-bg-light'
                       }`}
                     style={{ transition: 'all 0.2s ease' }}
                   >

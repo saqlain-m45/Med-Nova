@@ -50,46 +50,26 @@ body {
   color: #fff
 }
 
-/* Redesigned navbar (site) - Glassmorphism & Fixed */
+/* Redesigned navbar (site) used on non-index pages */
 .navbar-site {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-  padding-top: 12px;
-  padding-bottom: 12px;
-  transition: all 0.3s ease;
+  background: transparent
 }
 
 .navbar-site .brand-logo {
-  height: 50px;
-  width: 50px;
-  transition: all 0.3s ease;
+  height: 64px;
+  width: 64px
 }
 
 .navbar-site .brand-text {
   color: var(--blue-900);
   font-weight: 700;
   font-size: 24px;
-  font-family: var(--font-sans);
-  letter-spacing: -0.5px;
 }
 
 .navbar-site .nav-link {
   color: var(--blue-900);
-  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 15px;
-  margin: 0 14px;
   transition: color 0.2s ease;
-  position: relative;
 }
 
 .navbar-site .nav-link:hover,
@@ -97,38 +77,11 @@ body {
   color: var(--accent);
 }
 
-/* Home Page Specific Navbar Override - FORCE SIZE CONSISTENCY */
+/* Home Page Specific Navbar Override */
 .navbar-home .brand-logo {
-  height: 50px !important;
-  width: 50px !important;
+  height: 85px;
+  width: 85px;
   transition: all 0.3s ease;
-}
-
-/* Button Alignment & Consistency in Navbar */
-.navbar-site .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 0;
-  white-space: nowrap;
-  font-size: 15px;
-}
-
-/* Specific adjustment for the Appointment button if needed */
-.btn-appointment {
-  background-color: var(--blue-900);
-  color: #fff;
-  border: none;
-}
-
-.btn-appointment:hover {
-  background-color: var(--blue-700);
-  color: #fff;
 }
 
 /* ... */
@@ -1205,161 +1158,4 @@ footer {
   .site-footer .footer-brand strong {
     font-size: 18px
   }
-}
-
-/* TOP BAR REMOVED */
-
-/* Update Navbar to sit below TopBar */
-.navbar-site {
-  top: 0 !important;
-  /* Reset top */
-  height: 90px;
-  /* Adjust height */
-  z-index: 1000;
-}
-
-/* Redesign Brand Logo in Navbar to fit better */
-.navbar-site .brand-logo {
-  height: 70px !important;
-  width: 70px !important;
-}
-
-.navbar-home .brand-logo {
-  height: 70px !important;
-  width: 70px !important;
-}
-
-/* HERO REDESIGN */
-.hero-section {
-  padding-top: 140px;
-  /* Increased padding to prevent overlap */
-  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
-}
-
-/* Page Spacing for Non-Home Pages */
-.about-hero,
-.service-hero,
-.contact-hero,
-.page-header {
-  margin-top: 90px;
-}
-
-/* HERO TITLE HIGHLIGHT */
-.hero-title .highlight-text {
-  color: #84cc16;
-  /* Green highlight like reference */
-  font-weight: 700;
-}
-
-/* SEARCH INTERFACE */
-.hero-search-box {
-  background: #fff;
-  padding: 8px 8px 8px 24px;
-  border-radius: 50px;
-  /* Pill shape */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  max-width: 800px;
-  width: 100%;
-  margin-top: 30px;
-  border: 1px solid rgba(47, 123, 255, 0.15);
-}
-
-.hero-search-box .search-item {
-  flex: 1;
-  position: relative;
-}
-
-.hero-search-box .form-select {
-  border: none;
-  box-shadow: none;
-  height: 50px;
-  font-weight: 500;
-  color: #4b5b72;
-  background-color: transparent;
-  cursor: pointer;
-  padding-left: 30px;
-  background-image: none;
-  /* Hide default arrow if custom later, but keep for now */
-}
-
-.hero-search-box .icon {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #84cc16;
-  /* Green icon */
-}
-
-.hero-search-box .separator {
-  width: 1px;
-  height: 40px;
-  background: #e0e0e0;
-}
-
-.hero-search-box .btn-search {
-  border-radius: 40px;
-  padding: 14px 40px;
-  font-weight: 700;
-  white-space: nowrap;
-  background: #2f7bff;
-  /* Blue */
-  color: #fff;
-  border: none;
-  font-size: 16px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(47, 123, 255, 0.3);
-  background: #1c64e0;
-  transform: translateY(-2px);
-}
-
-/* INFINITE SCROLL MARQUEE */
-.marquee-wrapper {
-  display: flex;
-  overflow: hidden;
-  white-space: nowrap;
-  gap: 1rem;
-  padding: 5px 0;
-}
-
-.marquee-content {
-  display: flex;
-  gap: 2rem;
-  min-width: 100%;
-  animation: scroll 20s linear infinite;
-  flex-shrink: 0;
-  align-items: center;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-.marquee-item {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  display: inline-block;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.marquee-item::after {
-  content: '✦';
-  color: #4facfe;
-  margin-left: 2rem;
-  font-size: 0.8rem;
-  vertical-align: middle;
 }

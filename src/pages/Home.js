@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 
@@ -23,14 +23,6 @@ const itemVariants = {
 };
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [problem, setProblem] = useState('');
-  const [specialist, setSpecialist] = useState('');
-
-  const handleSearch = () => {
-    navigate('/doctors', { state: { problem, specialist } });
-  };
-
   const specializations = [
     { icon: '🩺', title: 'Harbor Health', description: 'Comprehensive evaluation and personalised care plans.' },
     { icon: '💧', title: 'Radius Wellness', description: 'Holistic wellness services to support recovery.' },
@@ -73,54 +65,23 @@ const Home = () => {
               <div className="hero-text">
                 <motion.h1 className="display-5 fw-bold hero-title" variants={itemVariants}>
                   <span className="line d-block">Brighten Your Smile</span>
-                  <span className="line d-block">Brighten Your <span className="highlight-text">Day</span></span>
+                  <span className="line d-block">Brighten Your Day</span>
                 </motion.h1>
                 <motion.p className="lead text-muted mt-3 hero-sub" variants={itemVariants}>
                   Delivering compassionate, modern care that helps you live healthier and happier. Expert clinicians, modern facilities and personalised treatment plans.
                 </motion.p>
-                <motion.div className="hero-search-box" variants={itemVariants}>
-                  <div className="search-item">
-                    <div className="icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-                    </div>
-                    <select
-                      className="form-select"
-                      aria-label="Select Problem"
-                      value={problem}
-                      onChange={(e) => setProblem(e.target.value)}
-                    >
-                      <option value="">Select Problem</option>
-                      <option value="Cardiology">Cardiology</option>
-                      <option value="Neurology">Neurology</option>
-                      <option value="Orthopedics">Orthopedics</option>
-                      <option value="Dental">Dental Care</option>
-                    </select>
-                  </div>
-                  <div className="separator"></div>
-                  <div className="search-item">
-                    <div className="icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                    </div>
-                    <select
-                      className="form-select"
-                      aria-label="Select Specialist"
-                      value={specialist}
-                      onChange={(e) => setSpecialist(e.target.value)}
-                    >
-                      <option value="">Select Specialist</option>
-                      <option value="Dr. Ayesha Khan">Dr. Ayesha Khan</option>
-                      <option value="Dr. Fatima Ahmed">Dr. Fatima Ahmed</option>
-                      <option value="Dr. Zara Malik">Dr. Zara Malik</option>
-                      <option value="Dr. Ali Raza">Dr. Ali Raza</option>
-                      <option value="Dr. Sara Khan">Dr. Sara Khan</option>
-                    </select>
-                  </div>
-                  <button className="btn-search" onClick={handleSearch}>FIND NOW</button>
+                <motion.div className="mt-4" variants={itemVariants}>
+                  <Link to="/appointment" className="btn btn-primary btn-lg me-3 hero-cta">
+                    Free Consultation
+                  </Link>
+                  <a href="#services" className="btn btn-outline-primary btn-lg hero-cta">
+                    Read More
+                  </a>
                 </motion.div>
               </div>
-              <motion.ul className="list-unstyled mt-5 d-flex gap-4 hero-stats" variants={itemVariants}>
-                <li><strong className="text-dark">200+</strong> Happy Patients</li>
-                <li><strong className="text-dark">20+</strong> Service Areas</li>
+              <motion.ul className="list-unstyled mt-4 d-flex gap-4 hero-stats" variants={itemVariants}>
+                <li><strong>200+</strong> Happy Patients</li>
+                <li><strong>20+</strong> Service Areas</li>
               </motion.ul>
             </motion.div>
             <motion.div
@@ -206,22 +167,35 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SCROLLING MARQUEE (New Process Section) */}
-      <section className="py-1" style={{ background: 'var(--blue-900)' }}>
-        <div className="container-fluid overflow-hidden p-0">
-          <div className="marquee-wrapper">
-            {/* Two sets of items for seamless loop */}
-            <div className="marquee-content">
-              {['Patient Centered', 'Advanced Diagnostics', '24/7 Support', 'Expert Specialists', 'Holistic Wellness', 'Modern Facilities'].map((item, index) => (
-                <span key={`1-${index}`} className="marquee-item">{item}</span>
-              ))}
-            </div>
-            <div className="marquee-content">
-              {['Patient Centered', 'Advanced Diagnostics', '24/7 Support', 'Expert Specialists', 'Holistic Wellness', 'Modern Facilities'].map((item, index) => (
-                <span key={`2-${index}`} className="marquee-item">{item}</span>
-              ))}
-            </div>
-          </div>
+      {/* PROCESS / VIDEO */}
+      <section id="process" className="py-5">
+        <div className="container">
+          <h3 className="text-center section-title">Our Treatment Process</h3>
+          <p className="text-center text-muted mb-4">
+            A structured process that keeps patients informed and comfortable throughout treatment.
+          </p>
+          <motion.div
+            className="video-placeholder mx-auto my-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="play-btn">▶</div>
+          </motion.div>
+          <motion.div
+            className="row g-3 mt-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {processCards.map((card, index) => (
+              <motion.div key={index} className="col-md-3" variants={itemVariants}>
+                <div className="process-card p-3">{card}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -430,6 +404,7 @@ const AppointmentSection = () => {
           >
             <div className="appointment-card p-4">
               <form onSubmit={handleSubmit}>
+                {/* Form fields remained same as simpler structure but we can just leave them as is */}
                 <div className="row g-2">
                   <div className="col-md-6">
                     <input
@@ -508,3 +483,4 @@ const AppointmentSection = () => {
 };
 
 export default Home;
+

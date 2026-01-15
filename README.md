@@ -339,4 +339,3 @@ For questions or issues, please contact the development team.
 ---
 
 **Built with React.js** ⚛️
-# Med-Nova

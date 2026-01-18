@@ -100,7 +100,7 @@ const Home = () => {
                 <div className="hero-blob-bg"></div>
 
                 {/* Main Image */}
-                <img src="/assets/hero_ref.png" alt="Doctor" className="hero-main-img img-fluid" style={{ maxHeight: '550px', objectFit: 'contain' }} />
+                <img src="/assets/hero-kohat-digital.png" alt="Kohat Smart Health" className="hero-main-img img-fluid" style={{ maxHeight: '600px', objectFit: 'contain' }} />
 
                 {/* Floating Card: Satisfied Clients */}
                 <motion.div

@@ -75,18 +75,18 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <a href="#" className="social-icon-circle" aria-label="Facebook">
+              <button className="social-icon-circle border-0 bg-transparent" onClick={(e) => e.preventDefault()} aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon-circle" aria-label="Twitter">
+              </button>
+              <button className="social-icon-circle border-0 bg-transparent" onClick={(e) => e.preventDefault()} aria-label="Twitter">
                 <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon-circle" aria-label="Instagram">
+              </button>
+              <button className="social-icon-circle border-0 bg-transparent" onClick={(e) => e.preventDefault()} aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="social-icon-circle" aria-label="LinkedIn">
+              </button>
+              <button className="social-icon-circle border-0 bg-transparent" onClick={(e) => e.preventDefault()} aria-label="LinkedIn">
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </button>
             </motion.div>
           </div>
         </div>

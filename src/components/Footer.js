@@ -44,25 +44,25 @@ const Footer = () => {
               </div>
               <p className="muted mt-3">Dedicated to providing top-notch healthcare services. Your health is our priority.</p>
               <div className="footer-social mt-3">
-                <a className="me-3" href="#" aria-label="Instagram" title="Instagram">
+                <button className="me-3 btn btn-link p-0 text-white" onClick={(e) => e.preventDefault()} aria-label="Instagram" title="Instagram">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     <circle cx="18.5" cy="5.5" r="0.5" fill="currentColor" />
                   </svg>
-                </a>
-                <a className="me-3" href="#" aria-label="Facebook" title="Facebook">
+                </button>
+                <button className="me-3 btn btn-link p-0 text-white" onClick={(e) => e.preventDefault()} aria-label="Facebook" title="Facebook">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22 12.07C22 6.5 17.52 2 11.96 2 6.4 2 2 6.5 2 12.07c0 5 3.66 9.14 8.44 9.93v-7.03H7.9v-2.9h2.54V9.4c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56v1.88h2.77l-.44 2.9h-2.33V22C18.34 21.2 22 17.07 22 12.07z" fill="currentColor" />
                   </svg>
-                </a>
-                <a className="me-3" href="#" aria-label="X" title="X">
+                </button>
+                <button className="me-3 btn btn-link p-0 text-white" onClick={(e) => e.preventDefault()} aria-label="X" title="X">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 6L8.7 17.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M7.7 6L19 17.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
-                <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                </button>
+                <button className="btn btn-link p-0 text-white" onClick={(e) => e.preventDefault()} aria-label="LinkedIn" title="LinkedIn">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" strokeWidth="1.4" />
                     <path d="M7.5 11.5V17" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
@@ -70,7 +70,7 @@ const Footer = () => {
                     <path d="M12 11.5v5.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                     <path d="M12 8.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" stroke="currentColor" strokeWidth="1.4" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
 

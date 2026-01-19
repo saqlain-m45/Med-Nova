@@ -1,104 +1,129 @@
 export const blogPosts = [
   {
     id: 1,
-    slug: 'advances-in-cardiology',
-    title: 'Recent Advances in Non-Invasive Cardiology',
-    category: 'Cardiology',
-    excerpt: 'Exploring the latest technologies in detecting heart disease earlier than ever before...',
-    image: '/assets/blog-1.svg',
+    slug: 'kda-mri-facility',
+    title: 'New MRI Facility Launch at KDA Teaching Hospital',
+    category: 'Hospital News',
+    excerpt: 'State-of-the-art diagnostic imaging is now available for the residents of Kohat at affordable rates...',
+    image: '/assets/blog-mri-full.png', // Generated MRI image
     date: 'January 15, 2026',
-    author: 'Dr. Ayesha Khan'
+    author: 'KDA Admin'
   },
   {
     id: 2,
-    slug: 'diabetes-management',
-    title: 'Modern Approaches to Type 2 Diabetes Management',
-    category: 'Endocrinology',
-    excerpt: 'New guidelines and lifestyle interventions that are changing the way we treat diabetes...',
-    image: '/assets/blog-1.svg',
+    slug: 'telemedicine-integration',
+    title: 'Telemedicine: Bridging the Gap in Kohat Healthcare',
+    category: 'Technology',
+    excerpt: 'How remote consultations are connecting rural patients in Kohat with top city specialists...',
+    image: '/assets/blog-telemedicine.png', // Generated Telemedicine image
     date: 'January 18, 2026',
-    author: 'Dr. Sarah Smith'
-  },
-  {
-    id: 3,
-    slug: 'telemedicine-future',
-    title: 'The Future of Telemedicine in Post-Pandemic Healthcare',
-    category: 'Digital Health',
-    excerpt: 'How remote consultations are becoming a permanent fixture in modern medical practice...',
-    image: '/assets/blog-1.svg',
-    date: 'January 20, 2026',
     author: 'Dr. Ali Raza'
   },
   {
+    id: 3,
+    slug: 'top-cardiologists-kohat',
+    title: 'Meet the Leading Heart Specialists at City Heart Center',
+    category: 'Doctors',
+    excerpt: 'A profile of the expert cardiology team dedicated to putting hearts first in our community...',
+    image: '/assets/blog-cardiology.png', // Generated Cardiology Team image
+    date: 'January 20, 2026',
+    author: 'Health Desk'
+  },
+  {
     id: 4,
-    slug: 'pediatric-nutrition',
-    title: 'Essential Guidelines for Pediatric Nutrition',
-    category: 'Pediatrics',
-    excerpt: 'A comprehensive guide for parents on ensuring optimal growth and development...',
-    image: '/assets/blog-1.svg',
+    slug: 'free-medical-camp-lachi',
+    title: 'Success Story: Free Medical Camp in Lachi',
+    category: 'Community Service',
+    excerpt: 'Over 500 patients received free checkups and medicine in our latest outreach program...',
+    image: '/assets/blog-camp.png', // From previous generation
     date: 'January 22, 2026',
-    author: 'Dr. Emily Chen'
+    author: 'Med Nova Team'
+  },
+  {
+    id: 5,
+    slug: 'dengue-prevention-alert',
+    title: 'Dengue Prevention: Guidelines for Kohat Citizens',
+    category: 'Public Health',
+    excerpt: 'Essential steps to protect your family from the seasonal dengue outbreak in our region...',
+    image: '/assets/blog-dengue.png', // From previous generation
+    date: 'January 10, 2026',
+    author: 'Health Department'
   }
 ];
 
 export const blogDetails = {
-  'advances-in-cardiology': {
-    title: 'Recent Advances in Non-Invasive Cardiology',
-    meta: 'By Dr. Ayesha Khan • January 15, 2026',
-    intro: 'Cardiology is witnessing a revolution with non-invasive techniques becoming more precise and accessible. From AI-driven imaging to wearable monitors, identifying heart risks has never been easier.',
-    hero: '/assets/blog-1.svg',
-    quote: 'Prevention is better than cure, and early detection is the key to prevention.',
-    quoteAuthor: 'Dr. Ayesha Khan',
-    subimage: '/assets/blog-1.svg',
+  'kda-mri-facility': {
+    title: 'New MRI Facility Launch at KDA Teaching Hospital',
+    meta: 'By KDA Admin • January 15, 2026',
+    intro: 'KDA Teaching Hospital has taken a giant leap in diagnostic services with the inauguration of a new, high-tech MRI department. This facility aims to reduce the need for patients to travel to Peshawar for advanced imaging.',
+    hero: '/assets/blog-mri-full.png',
+    quote: 'Our mission is to bring world-class healthcare to the doorstep of every Kohat resident.',
+    quoteAuthor: 'Medical Superintendent, KDA',
+    subimage: '/assets/blog-mri-full.png',
     bullets: [
-      'AI-powered ECG analysis',
-      'Wearable heart rate monitors',
-      'Non-invasive CT angiography'
+      '1.5 Tesla MRI Machine',
+      '24/7 Service Availability',
+      'Subsidized rates for deserving patients'
     ],
     comments: []
   },
-  'diabetes-management': {
-    title: 'Modern Approaches to Type 2 Diabetes Management',
-    meta: 'By Dr. Sarah Smith • January 18, 2026',
-    intro: 'Managing Type 2 diabetes is no longer just about medication. It involves a holistic approach including diet, exercise, and continuous glucose monitoring systems that provide real-time data.',
-    hero: '/assets/blog-1.svg',
-    quote: 'Lifestyle changes are the most powerful medicine for Type 2 diabetes.',
-    quoteAuthor: 'Dr. Sarah Smith',
-    subimage: '/assets/blog-1.svg',
-    bullets: [
-      'Continuous Glucose Monitoring (CGM)',
-      'Low-carb and Keto diets',
-      'GLP-1 receptor agonists'
-    ],
-    comments: []
-  },
-  'telemedicine-future': {
-    title: 'The Future of Telemedicine in Post-Pandemic Healthcare',
-    meta: 'By Dr. Ali Raza • January 20, 2026',
-    intro: 'Telemedicine has transformed from a necessity during the pandemic to a preferred mode of consultation for many. It offers convenience without compromising on the quality of care for non-emergency conditions.',
-    hero: '/assets/blog-1.svg',
-    quote: 'Healthcare should be accessible to everyone, everywhere.',
+  'telemedicine-integration': {
+    title: 'Telemedicine: Bridging the Gap in Kohat Healthcare',
+    meta: 'By Dr. Ali Raza • January 18, 2026',
+    intro: 'For many residents in the outskirts of Kohat, accessing a specialist often means a long, arduous journey. Telemedicine is changing that narrative, offering virtual consultations that save time, money, and lives.',
+    hero: '/assets/blog-telemedicine.png',
+    quote: 'Technology is the great equalizer in modern medicine.',
     quoteAuthor: 'Dr. Ali Raza',
-    subimage: '/assets/blog-1.svg',
+    subimage: '/assets/blog-telemedicine.png',
     bullets: [
-      'Remote patient monitoring',
-      'Virtual mental health sessions',
-      'AI chatbots for triage'
+      'Video consultations with simple apps',
+      'Digital prescription delivery',
+      'Follow-up care from home'
     ],
     comments: []
   },
-  'pediatric-nutrition': {
-    title: 'Essential Guidelines for Pediatric Nutrition',
-    meta: 'By Dr. Emily Chen • January 22, 2026',
-    intro: 'Proper nutrition in the early years creates a foundation for lifelong health. This guide covers essential macronutrients and micronutrients that every growing child needs.',
-    hero: '/assets/blog-1.svg',
-    quote: 'Healthy children build a healthy future.',
-    quoteAuthor: 'Dr. Emily Chen',
-    subimage: '/assets/blog-1.svg',
+  'top-cardiologists-kohat': {
+    title: 'Meet the Leading Heart Specialists at City Heart Center',
+    meta: 'By Health Desk • January 20, 2026',
+    intro: 'The City Heart Center Kohat is home to some of the finest cardiologists in the province. With international training and decades of experience, our team is equipped to handle complex cardiac cases with precision.',
+    hero: '/assets/blog-cardiology.png',
+    quote: 'Your heart is in safe hands with our dedicated team.',
+    quoteAuthor: 'Head of Cardiology',
+    subimage: '/assets/blog-cardiology.png',
     bullets: [
-      'Importance of Vitamin D and Calcium',
-      'Balanced meals for picky eaters',
-      'Limiting sugar intake'
+      '24/7 Cardiac Emergency Unit',
+      'Non-invasive diagnostic labs',
+      'Patient-centered care approach'
+    ],
+    comments: []
+  },
+  'free-medical-camp-lachi': {
+    title: 'Success Story: Free Medical Camp in Lachi',
+    meta: 'By Med Nova Team • January 22, 2026',
+    intro: 'Our recent medical camp in Tehsil Lachi was a resounding success. A team of general physicians, ophthalmologists, and pediatricians provided free consultations and medicines to the local community.',
+    hero: '/assets/blog-camp.png',
+    quote: 'Serving the underserved is the core value of Med Nova.',
+    quoteAuthor: 'Camp Organizer',
+    subimage: '/assets/blog-camp.png',
+    bullets: [
+      '500+ Patients Checked',
+      'Free Medicines Distributed',
+      'Eye screenings for 200 seniors'
+    ],
+    comments: []
+  },
+  'dengue-prevention-alert': {
+    title: 'Dengue Prevention: Guidelines for Kohat Citizens',
+    meta: 'By Health Department • January 10, 2026',
+    intro: 'With the onset of the monsoon season, the risk of Dengue fever rises. The Health Department has issued guidelines to help citizens eliminate breeding sites and protect themselves.',
+    hero: '/assets/blog-dengue.png',
+    quote: 'Prevention starts at home. Keep your surroundings dry and clean.',
+    quoteAuthor: 'District Health Officer',
+    subimage: '/assets/blog-dengue.png',
+    bullets: [
+      'Remove stagnant water',
+      'Use mosquito repellents',
+      'Wear long sleeves outdoors'
     ],
     comments: []
   }

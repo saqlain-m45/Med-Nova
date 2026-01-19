@@ -14,10 +14,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-glass py-2 ${location.pathname === '/' ? 'navbar-home' : ''}`}>
+    <nav className="navbar navbar-expand-lg navbar-glass py-2 navbar-home">
       <div className="container-fluid px-lg-5 nav-inner align-items-center d-flex justify-content-between">
         <Link className="navbar-brand d-flex align-items-center me-4" to="/">
-          <img src="/assets/logo.png" alt="Med Nova" className="brand-logo" style={{ height: '50px', width: 'auto' }} />
+          <img src="/assets/logo.png" alt="Med Nova" className="brand-logo" />
           <span className="brand-text ms-2" style={{ color: '#04214f' }}>Med Nova</span>
         </Link>
 

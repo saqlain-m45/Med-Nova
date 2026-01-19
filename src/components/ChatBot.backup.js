@@ -2,24 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import OpenAI from 'openai';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- EXTENDED LOCAL KNOWLEDGE (Offline AI) ---
-const MEDICAL_FAQ = {
-    "fever": "For a mild fever, stay hydrated and rest. If it exceeds 102°F (39°C) or lasts more than 3 days, please see a doctor.",
-    "headache": "Common causes include dehydration, stress, or lack of sleep. Drink water and rest in a dark room. If severe, consult a neurologist.",
-    "flu": "Flu symptoms include fever, chills, and body aches. Rest and hydration are key. If you have difficulty breathing, seek emergency care.",
-    "cold": "Common colds usually resolve in 7-10 days. Zinc and Vitamin C may help. Monitor for high fever.",
-    "diabetes": "Diabetes management involves monitoring blood sugar, a balanced diet, and regular exercise. Our endocrinologists can help create a plan.",
-    "blood pressure": "High blood pressure (Hypertension) is often called the silent killer. Reduce salt intake and exercise. Regular checkups are vital.",
-    "diet": "A balanced diet includes plenty of fruits, vegetables, lean proteins, and whole grains. Avoid excessive sugar and processed foods.",
-    "water": "Daily water intake depends on many factors, but 8 cups (2 liters) is a good general goal. Drink more if active.",
-    "exercise": "Aim for at least 150 minutes of moderate aerobic activity or 75 minutes of vigorous activity a week.",
-    "stress": "Managing stress is important for heart health. Try meditation, deep breathing, or yoga. We also have mental health support.",
-    "covid": "COVID-19 symptoms vary. If you suspect infection, isolate yourself and get tested. We offer PCR testing here.",
-    "pain": "For chronic or acute pain, please consult our specialists. Do not self-medicate for long periods.",
-    "heart": "Chest pain should never be ignored. If you feel pressure or tightness, call Emergency (1122) immediately.",
-    "skin": "For rashes, acne, or other skin issues, our Dermatology department is available. Avoid harsh chemicals."
-};
-
 // --- LOCAL KNOWLEDGE BASE (The "Perfect" reliability layer) ---
 const HOSPITAL_DATA = {
     doctors: [
@@ -112,26 +94,13 @@ const ChatBot = () => {
             botReply = "You can easily book an appointment by clicking the 'Get Appointment' button in the menu, or just tell me which doctor you need.";
         }
 
-        // 2. CHECK EXTENDED MEDICAL FAQ (Simulated AI)
-        if (!botReply) {
-            // Check for keywords in our local medical database
-            const keywords = Object.keys(MEDICAL_FAQ);
-            for (let i = 0; i < keywords.length; i++) {
-                if (lowerText.includes(keywords[i])) {
-                    botReply = MEDICAL_FAQ[keywords[i]];
-                    break;
-                }
-            }
-        }
-
-        // 3. IF NO LOCAL MATCH, TRY API (Real AI)
+        // 2. IF NO LOCAL MATCH, TRY API (AI Layer)
         if (!botReply) {
             try {
                 const apiKey = process.env.REACT_APP_DEEPSEEK_API_KEY; // OR REACT_APP_OPENAI_API_KEY
 
                 if (!apiKey) {
-                    // Fail silently to local fallback if no key
-                    throw new Error("No API Key");
+                    throw new Error("No API Key configured");
                 }
 
                 const openai = new OpenAI({
@@ -154,11 +123,20 @@ const ChatBot = () => {
             } catch (error) {
                 console.warn("AI Fallback Error:", error);
 
-                // FINAL FALLBACK: If both Local DB and API fail, give a helpful Google Search link
-                // This ensures the user NEVER gets a dead end or "Auth Failed" message for general queries.
-                const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(userText + " health medical advice")}`;
+                let errorMsg = "I'm sorry, I couldn't find specific information on that in my database.";
 
-                botReply = `I'm currently updating my medical database for that specific topic. \n\nHowever, you can find verified information here: \n[Click to Search on Google](${searchUrl})`;
+                // Smart Error Diagnosis
+                if (!process.env.REACT_APP_DEEPSEEK_API_KEY) {
+                    errorMsg = "⚠️ **System Update Required**: I have a new brain (API Key) installed, but you need to **RESTART THE SERVER** to activate it. Please run `npm start` again.";
+                } else if (error.message.includes("Insufficient Balance")) {
+                    errorMsg = "⚠️ **API Quota Exceeded**: Your DeepSeek account has insufficient balance. Please check your billing at platform.deepseek.com.";
+                } else if (error.message.includes("401")) {
+                    errorMsg = "⚠️ **Authentication Failed**: The API Key appears to be invalid. Please verify it in your .env file.";
+                } else if (error.message.includes("Network Error")) {
+                    errorMsg = "⚠️ **Connection Error**: I cannot reach the internet right now. Please check your connection.";
+                }
+
+                botReply = errorMsg;
             }
         }
 
@@ -279,17 +257,14 @@ const ChatBot = () => {
 
             {/* Launcher Button */}
             {!isOpen && (
-                <div className="chatbot-launcher-wrapper" style={{ position: 'relative' }}>
-                    <span className="chatbot-label">Ask Me 👋</span>
-                    <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => setIsOpen(true)}
-                        className="chatbot-launcher"
-                    >
-                        <img src="/assets/bot-avatar.png" alt="Chat" className="chatbot-launcher-img" />
-                    </motion.button>
-                </div>
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setIsOpen(true)}
+                    className="chatbot-launcher"
+                >
+                    <i className="bi bi-chat-heart-fill"></i>
+                </motion.button>
             )}
         </div>
     );

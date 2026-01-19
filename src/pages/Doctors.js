@@ -29,10 +29,26 @@ const Doctors = () => {
   return (
     <PageTransition>
       {/* HEADER */}
-      <header className="about-hero service-hero py-5">
-        <div className="container text-center text-white py-4">
-          <h1 className="display-4 fw-bold">Find Your Specialist</h1>
-          <p className="lead opacity-75">Expert care across all specialties</p>
+      {/* HEADER */}
+      <header className="doctors-hero-section">
+        <div className="container text-center py-4">
+          <motion.h1
+            className="display-4 fw-bold mb-3"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Find Your Specialist
+          </motion.h1>
+          <motion.p
+            className="lead opacity-90 mx-auto"
+            style={{ maxWidth: '600px' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Connect with top-rated medical experts in Kohat for personalized care.
+          </motion.p>
         </div>
       </header>
 
@@ -49,8 +65,8 @@ const Doctors = () => {
                     key={spec}
                     onClick={() => setSelectedSpecialty(spec)}
                     className={`btn text-start rounded-3 py-2 px-3 fw-medium transition-all ${selectedSpecialty === spec
-                        ? 'btn-primary text-white shadow-sm'
-                        : 'btn-light text-muted bg-transparent hover-bg-light'
+                      ? 'btn-primary text-white shadow-sm'
+                      : 'btn-light text-muted bg-transparent hover-bg-light'
                       }`}
                     style={{ transition: 'all 0.2s ease' }}
                   >

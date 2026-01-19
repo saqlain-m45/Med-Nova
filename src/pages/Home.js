@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
 
 const containerVariants = {
@@ -377,25 +377,40 @@ const Home = () => {
 };
 
 // Helper Component for FAQ
+// Helper Component for FAQ
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <div className="faq-card">
-      <div className={`faq-header ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(!isOpen)}>
-        <span>{question}</span>
-        <div className="faq-icon">
-          <i className="bi bi-chevron-down">^</i>
-        </div>
-      </div>
-      {isOpen && (
+      <div
+        className={`faq-header ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+      >
+        <span className="fw-semibold">{question}</span>
         <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 'auto', opacity: 1 }}
-          className="faq-body"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="faq-icon-wrapper"
         >
-          {answer}
+          <i className="bi bi-chevron-down text-primary"></i>
         </motion.div>
-      )}
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div className="faq-body text-muted pt-2 pb-3">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

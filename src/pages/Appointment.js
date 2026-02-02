@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { doctors, specialties } from '../data/doctors';
+import { api } from '../services/api';
 import PageTransition from '../components/PageTransition';
 
 const Appointment = () => {
@@ -15,11 +15,27 @@ const Appointment = () => {
     date: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [doctorsList, setDoctorsList] = useState([]);
+  const [specialtiesList, setSpecialtiesList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await api.getDoctors();
+        setDoctorsList(data);
+        const uniqueSpecialties = [...new Set(data.map(doc => doc.specialty))];
+        setSpecialtiesList(uniqueSpecialties);
+      } catch (error) {
+        console.error("Error loading appointment data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Derived state for filtering doctors based on selected specialty
   const filteredDoctors = formData.specialty
-    ? doctors.filter(doc => doc.specialty === formData.specialty)
-    : doctors;
+    ? doctorsList.filter(doc => doc.specialty === formData.specialty)
+    : doctorsList;
 
   const handleChange = (e) => {
     setFormData({
@@ -50,12 +66,19 @@ const Appointment = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Appointment submitted:', formData);
-      setStep(3); // Move to success step
+    try {
+      const response = await api.bookAppointment(formData);
+      if (response.success) {
+        setStep(3); // Move to success step
+      } else {
+        alert('Failed to book: ' + response.message);
+      }
+    } catch (error) {
+      alert('Error booking appointment. Please try again.');
+      console.error(error);
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -183,7 +206,7 @@ const Appointment = () => {
                           required
                         >
                           <option value="">Select Specialty</option>
-                          {specialties.filter(s => s !== 'All').map(spec => (
+                          {specialtiesList.map(spec => (
                             <option key={spec} value={spec}>{spec}</option>
                           ))}
                         </select>

@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { doctors, specialties } from '../data/doctors';
+import { api } from '../services/api';
 import PageTransition from '../components/PageTransition';
 
 const Doctors = () => {
+  const [doctorsList, setDoctorsList] = useState([]);
+  const [specialtiesList, setSpecialtiesList] = useState(['All']);
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
-  const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await api.getDoctors();
+        setDoctorsList(data);
+
+        // Extract unique specialties
+        const uniqueSpecialties = ['All', ...new Set(data.map(doc => doc.specialty))];
+        setSpecialtiesList(uniqueSpecialties);
+        setFilteredDoctors(data); // Initial set
+      } catch (error) {
+        console.error("Failed to fetch doctors:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     if (selectedSpecialty === 'All') {
-      setFilteredDoctors(doctors);
+      setFilteredDoctors(doctorsList);
     } else {
-      setFilteredDoctors(doctors.filter(doc => doc.specialty === selectedSpecialty));
+      setFilteredDoctors(doctorsList.filter(doc => doc.specialty === selectedSpecialty));
     }
-  }, [selectedSpecialty]);
+  }, [selectedSpecialty, doctorsList]);
 
   // Set first doctor as selected by default when list changes
   useEffect(() => {
@@ -60,7 +79,7 @@ const Doctors = () => {
             <div className="filters-sidebar p-4 bg-white rounded-3 shadow-sm sticky-top" style={{ top: '100px', zIndex: 10 }}>
               <h5 className="mb-3 fw-bold text-dark">Specialties</h5>
               <div className="d-flex flex-column gap-2">
-                {specialties.map((spec) => (
+                {specialtiesList.map((spec) => (
                   <button
                     key={spec}
                     onClick={() => setSelectedSpecialty(spec)}

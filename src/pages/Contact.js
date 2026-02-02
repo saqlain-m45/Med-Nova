@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { api } from '../services/api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
@@ -25,13 +26,20 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Contact form submitted:', formData);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', city: '', message: '' });
+    try {
+      const response = await api.sendMessage(formData);
+      if (response.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', city: '', message: '' });
+      } else {
+        alert('Failed to send message: ' + response.message);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Error sending message. Please try again.");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { api } from '../services/api';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
@@ -12,56 +13,26 @@ const itemVariants = {
 };
 
 const Services = () => {
-  const kohatServices = [
-    {
-      id: 1,
-      name: 'Emergency & Trauma',
-      location: 'KDA Teaching Hospital',
-      description: '24/7 fully equipped emergency department handling critical cases with advanced life support systems.',
-      image: '/assets/service-kda-emergency.png',
-      slug: 'emergency-trauma'
-    },
-    {
-      id: 2,
-      name: 'Advanced Cardiology',
-      location: 'City Heart Center',
-      description: 'State-of-the-art heart care including ECG, Echocardiography, and Angiography services in Kohat.',
-      image: '/assets/service-city-heart.png',
-      slug: 'cardiology'
-    },
-    {
-      id: 3,
-      name: 'Diagnostic Laboratory',
-      location: 'Kohat Labs',
-      description: 'Accurate and rapid testing services with modern automated analyzers for all pathology needs.',
-      image: '/assets/service-kohat-labs.png',
-      slug: 'diagnostic-lab'
-    },
-    {
-      id: 4,
-      name: 'Pediatrics Department',
-      location: 'DHQ Hospital Kohat',
-      description: 'Comprehensive child healthcare including vaccination, neonatology, and general pediatric surgery.',
-      image: '/assets/service-pediatrics-dhq.png',
-      slug: 'pediatrics'
-    },
-    {
-      id: 5,
-      name: 'Orthopedics & Joint',
-      location: 'KDA Teaching Hospital',
-      description: 'Specialized care for fractures, joint replacements, and bone health management by expert surgeons.',
-      image: '/assets/service-orthopedics-kda.png',
-      slug: 'orthopedics'
-    },
-    {
-      id: 6,
-      name: 'Dental Care',
-      location: 'Kohat Bazar Clinics',
-      description: 'Professional dental hygiene, surgery, and cosmetic dentistry services available in the city center.',
-      image: '/assets/service-dental-kohat.png',
-      slug: 'dental-care'
-    }
-  ];
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await api.getServices();
+        // Fallback or specific mapping
+        const mappedServices = data.map(service => ({
+          ...service,
+          // Use placeholder or API provided icon/image
+          image: service.icon && service.icon !== '/assets/service-icon-default.svg' ? service.icon : '/assets/service-kda-emergency.png', // Temporary fallback
+          location: 'Main Branch' // Placeholder as DB doesn't have location yet
+        }));
+        setServices(mappedServices);
+      } catch (error) {
+        console.error('Failed to fetch services:', error);
+      }
+    };
+    fetchServices();
+  }, []);
 
   return (
     <PageTransition>
@@ -100,7 +71,7 @@ const Services = () => {
               visible: { transition: { staggerChildren: 0.1 } }
             }}
           >
-            {kohatServices.map((service) => (
+            {services.map((service) => (
               <motion.div key={service.id} className="col-md-6 col-lg-4" variants={itemVariants}>
                 <div className="service-img-card">
                   <div className="service-card-img-wrapper">
